@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Areas | Ready Legal</title>
+<meta name="description" content="Ready Legal represents Florida contractors, small businesses, and clients in construction law, business law, and litigation throughout Florida.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --navy: #0b2a4a;
+  --navy-mid: #143a63;
+  --orange: #ff8c2a;
+  --orange-dark: #e67a1f;
+  --white: #ffffff;
+  --off-white: #f5f7fb;
+  --gray: #e4e8f0;
+  --text: #1a2332;
+  --text-light: #5a6478;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ──────────────────────────────────────────────────── */
+header {
+  background: var(--navy);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 68px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.25);
+}
+
+.logo { color: white; text-decoration: none; font-weight: 700; font-size: 20px; letter-spacing: 4px; text-transform: uppercase; transition: color 0.3s; }
+.logo:hover { color: var(--orange); }
+
+nav { display: flex; gap: 28px; align-items: center; }
+nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+nav a:hover { color: white; }
+.nav-cta { background: var(--orange); color: white !important; padding: 9px 20px; border-radius: 3px; font-weight: 600 !important; transition: background 0.3s !important; }
+.nav-cta:hover { background: var(--orange-dark) !important; }
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding: 80px 48px;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(11,42,74,0.97) 45%, rgba(11,42,74,0.6) 100%),
+    url("https://readylegal.net/wp-content/uploads/2025/05/mick-haupt-tyn3-cljx-a-unsplash.jpg");
+  background-size: cover;
+  background-position: center right;
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
+
+.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
+.hero h1 { font-weight: 700; font-size: clamp(32px, 5vw, 58px); color: white; line-height: 1.1; margin-bottom: 16px; max-width: 700px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s; }
+.hero-sub { font-size: 16px; color: rgba(255,255,255,0.65); font-weight: 300; max-width: 560px; line-height: 1.8; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
+
+/* ── AREA SELECTOR ────────────────────────────────────────────── */
+.area-selector {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--gray);
+  padding: 0 48px;
+  position: sticky;
+  top: 68px;
+  z-index: 90;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.area-selector-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+}
+
+.area-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.area-tab:hover { background: white; border-bottom-color: var(--gray); }
+.area-tab.active { border-bottom-color: var(--orange); background: white; }
+
+.area-tab-icon { font-size: 26px; line-height: 1; }
+
+.area-tab-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--navy);
+  text-transform: uppercase;
+}
+
+.area-tab-sub {
+  font-size: 11px;
+  color: var(--text-light);
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ── PRACTICE AREA SECTIONS ──────────────────────────────────── */
+.area-section {
+  padding: 0;
+  scroll-margin-top: 140px;
+}
+
+/* Area header band */
+.area-band {
+  background: var(--navy);
+  padding: 56px 48px;
+}
+
+.area-band-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.area-band-content .area-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 12px;
+}
+
+.area-band-content h2 {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.area-band-content p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.68);
+  font-weight: 300;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.area-band-content p:last-of-type { margin-bottom: 28px; }
+
+.btn-primary {
+  background: var(--orange);
+  color: white;
+  padding: 13px 28px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+
+.area-band-image { position: relative; }
+.area-band-image::before {
+  content: '';
+  position: absolute;
+  top: -12px; left: -12px; right: 12px; bottom: 12px;
+  border: 2px solid var(--orange);
+  border-radius: 3px;
+  opacity: 0.4;
+}
+.area-band-image img { width: 100%; display: block; border-radius: 3px; position: relative; z-index: 1; filter: grayscale(20%); }
+
+/* Services sub-sections */
+.area-services {
+  background: var(--white);
+  padding: 64px 48px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.area-services:last-of-type { border-bottom: none; }
+
+.area-services-inner { max-width: 1200px; margin: 0 auto; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+  background: var(--off-white);
+  border: 1px solid var(--gray);
+  border-top: 3px solid var(--navy);
+  padding: 28px 24px 32px;
+  border-radius: 2px;
+  transition: border-top-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.service-card:hover {
+  border-top-color: var(--orange);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.service-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray);
+}
+
+.service-card ul { list-style: none; }
+
+.service-card li {
+  font-size: 13px;
+  color: var(--text-light);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(228,232,240,0.6);
+  display: flex;
+  gap: 10px;
+  line-height: 1.45;
+  font-weight: 300;
+}
+
+.service-card li::before { content: '—'; color: var(--orange); flex-shrink: 0; font-weight: 700; }
+.service-card li:last-child { border-bottom: none; }
+
+/* Back to top row */
+.back-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  border-top: 1px solid var(--gray);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.back-to-top {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.back-to-top:hover { color: var(--navy); }
+.back-to-top::before { content: '↑'; font-size: 14px; }
+
+/* Separator between areas */
+.area-divider {
+  height: 4px;
+  background: linear-gradient(90deg, var(--navy), var(--navy-mid), var(--orange));
+}
+
+/* ── CTA STRIP ────────────────────────────────────────────────── */
+.cta-strip {
+  background: var(--orange);
+  padding: 48px 48px;
+}
+
+.cta-strip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-strip h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: white; line-height: 1.2; }
+.cta-strip p { font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 6px; }
+
+.btn-white {
+  background: white;
+  color: var(--orange);
+  padding: 14px 32px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer { background: #07192c; padding: 56px 48px 28px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+.footer-brand .logo { display: block; margin-bottom: 14px; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 9px; }
+.footer-col a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; }
+.footer-col a:hover { color: var(--orange); }
+.footer-contact { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
+.footer-contact a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+.footer-contact a:hover { color: var(--orange); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+.footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.75; max-width: 680px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); white-space: nowrap; }
+
+/* ── ANIMATIONS ───────────────────────────────────────────────── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  nav { display: none; }
+  header { padding: 0 24px; }
+  .hero { padding: 56px 24px; }
+  .area-selector { padding: 0 16px; top: 68px; }
+  .area-tab { padding: 16px 8px; }
+  .area-tab-sub { display: none; }
+  .area-band { padding: 48px 24px; }
+  .area-band-inner { grid-template-columns: 1fr; gap: 40px; }
+  .area-band-image { display: none; }
+  .area-services { padding: 48px 24px; }
+  .services-grid { grid-template-columns: 1fr; gap: 16px; }
+  .cta-strip { padding: 40px 24px; }
+  .cta-strip-inner { flex-direction: column; align-items: flex-start; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  footer { padding: 48px 24px 24px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="https://home.readylegal.net" class="logo">READY LEGAL</a>
+  <nav>
+    <a href="https://counsel.readylegal.net">Counsel</a>
+    <a href="#" style="color:white;">Practice Areas</a>
+    <a href="https://readylegal.net/pricing/">Pricing</a>
+    <a href="https://readylegal.net/about/">About</a>
+    <a href="https://readylegal.net/articles/">Blog</a>
+    <a href="https://home.readylegal.net#intake" class="nav-cta">Get Help</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Orlando, Florida &mdash; Statewide Representation</p>
+    <h1>Practice Areas</h1>
+    <p class="hero-sub">Ready Legal provides focused representation in construction law, business law, and litigation for Florida contractors and small business owners.</p>
+  </div>
+</section>
+
+<!-- AREA SELECTOR (sticky nav tabs) -->
+<div class="area-selector">
+  <div class="area-selector-inner">
+    <a href="#construction" class="area-tab active" onclick="setActive(this)">
+      <span class="area-tab-icon">&#127959;</span>
+      <span class="area-tab-label">Construction Law</span>
+      <span class="area-tab-sub">Liens &middot; Disputes &middot; Licensing</span>
+    </a>
+    <a href="#business" class="area-tab" onclick="setActive(this)">
+      <span class="area-tab-icon">&#128188;</span>
+      <span class="area-tab-label">Business Law</span>
+      <span class="area-tab-sub">Formation &middot; Contracts &middot; Counsel</span>
+    </a>
+    <a href="#litigation" class="area-tab" onclick="setActive(this)">
+      <span class="area-tab-icon">&#9878;&#65039;</span>
+      <span class="area-tab-label">Litigation</span>
+      <span class="area-tab-sub">Courts &middot; Collections &middot; Disputes</span>
+    </a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONSTRUCTION LAW
+══════════════════════════════════════════════════════════════ -->
+<section class="area-section" id="construction">
+
+  <div class="area-band">
+    <div class="area-band-inner">
+      <div class="area-band-content">
+        <p class="area-eyebrow">Practice Area</p>
+        <h2>Construction Law</h2>
+        <p>Ready Legal's counsel represents a wide array of clients in Florida's construction industry, including material suppliers, general contractors, developers, roofers, and smaller sub-trades.</p>
+        <p>From lien rights and payment disputes to licensing matters and OSHA defense, Ready Legal provides a full scope of construction law services tailored to the unique demands of the industry.</p>
+        <a href="https://home.readylegal.net#intake" class="btn-primary">Request a Consultation &rarr;</a>
+      </div>
+      <div class="area-band-image">
+        <img src="https://readylegal.net/wp-content/uploads/2024/08/an-image-of-a-lawyer-and-a-construction-worker-standing-3-1.png" alt="Construction law attorney with contractor" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="area-services">
+    <div class="area-services-inner">
+      <div class="services-grid">
+
+        <div class="service-card">
+          <h3>Lien &amp; Bond Claims</h3>
+          <ul>
+            <li>Drafting and recording lien claims</li>
+            <li>Serving payment bond claims and notices of non-payment</li>
+            <li>Issuing and responding to construction demand letters</li>
+            <li>Filing and defending lien foreclosure lawsuits</li>
+            <li>Negotiating settlements between contractors</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Payment &amp; Defect Litigation</h3>
+          <ul>
+            <li>Claims of defective or nonconforming construction</li>
+            <li>Schedule impact claims &amp; liquidated damages</li>
+            <li>Disputed change orders</li>
+            <li>Non-payment and lien foreclosure</li>
+            <li>Terminations or improper suspensions of work</li>
+            <li>Secondary damages and general liability insurance issues</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Contract &amp; General Support</h3>
+          <ul>
+            <li>Construction contract review and drafting</li>
+            <li>Construction license applications</li>
+            <li>OSHA compliance and citation defense</li>
+            <li>DBPR/CILB investigations and discipline</li>
+            <li>Construction business formation</li>
+            <li>Local permitting issues and disputes</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="back-row">
+        <a href="#top" class="back-to-top">Back to Top</a>
+        <a href="https://home.readylegal.net#intake" class="btn-primary">Speak With an Attorney &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="area-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BUSINESS LAW
+══════════════════════════════════════════════════════════════ -->
+<section class="area-section" id="business">
+
+  <div class="area-band">
+    <div class="area-band-inner">
+      <div class="area-band-content">
+        <p class="area-eyebrow">Practice Area</p>
+        <h2>Business Law</h2>
+        <p>Starting and growing a small business demands legal guidance that is reliable and tailored to your journey. Ready Legal is available to assist contractors, service providers, manufacturers, landlords, and property managers.</p>
+        <p>Whether your business is just starting out or looking to strengthen its legal foundation, Ready Legal provides the counsel your business needs to thrive in a competitive environment.</p>
+        <a href="https://home.readylegal.net#intake" class="btn-primary">Request a Consultation &rarr;</a>
+      </div>
+      <div class="area-band-image">
+        <img src="https://readylegal.net/wp-content/uploads/2023/12/img_0368-1.jpg" alt="Business law" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="area-services">
+    <div class="area-services-inner">
+      <div class="services-grid">
+
+        <div class="service-card">
+          <h3>Start-Ups &amp; Operations</h3>
+          <ul>
+            <li>Incorporating and organizing new entities</li>
+            <li>Applying for professional licensing</li>
+            <li>Drafting governance documents and articles of incorporation</li>
+            <li>Preparing safety manuals and corporate policies</li>
+            <li>Drafting form contracts and terms of service</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Business Litigation</h3>
+          <ul>
+            <li>Breach of contract and collections</li>
+            <li>Business torts and unfair conduct</li>
+            <li>Partner and ownership disputes</li>
+            <li>Defective service and termination</li>
+            <li>Non-compete and non-disclosure enforcement</li>
+            <li>Business-to-business collections</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Contract Review &amp; Drafting</h3>
+          <ul>
+            <li>Vendor and service agreements</li>
+            <li>Customer contracts and terms of service</li>
+            <li>Product and service contracts</li>
+            <li>Construction contracts</li>
+            <li>Contract negotiation and risk review</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="back-row">
+        <a href="#top" class="back-to-top">Back to Top</a>
+        <a href="https://home.readylegal.net#intake" class="btn-primary">Speak With an Attorney &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="area-divider"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LITIGATION
+══════════════════════════════════════════════════════════════ -->
+<section class="area-section" id="litigation">
+
+  <div class="area-band">
+    <div class="area-band-inner">
+      <div class="area-band-content">
+        <p class="area-eyebrow">Practice Area</p>
+        <h2>Litigation</h2>
+        <p>No matter what type of business you are in, disputes are inevitable. Ready Legal's counsel recognizes the financial challenges small businesses face and appreciates the need to negotiate before resorting to litigation.</p>
+        <p>When negotiation breaks down, Ready Legal is prepared to pursue your case in court. The firm handles both straightforward and complex litigation matters for Florida contractors and small business owners.</p>
+        <a href="https://home.readylegal.net#intake" class="btn-primary">Request a Consultation &rarr;</a>
+      </div>
+      <div class="area-band-image">
+        <img src="https://readylegal.net/wp-content/uploads/2023/08/court.jpg" alt="Litigation" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="area-services">
+    <div class="area-services-inner">
+      <div class="services-grid">
+
+        <div class="service-card">
+          <h3>Commercial Litigation</h3>
+          <ul>
+            <li>Breach of contract claims</li>
+            <li>Business torts and unfair competition</li>
+            <li>Co-owner and partnership disputes</li>
+            <li>Business-to-business collections</li>
+            <li>Misappropriation and trade secret claims</li>
+            <li>Defective service and termination disputes</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Construction Litigation</h3>
+          <ul>
+            <li>Lien foreclosure lawsuits</li>
+            <li>Construction defect and nonconformance claims</li>
+            <li>Payment and change order disputes</li>
+            <li>Schedule impact and liquidated damages</li>
+            <li>Termination and suspension disputes</li>
+            <li>Payment bond claims and enforcement</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Evictions &amp; Property Disputes</h3>
+          <ul>
+            <li>Residential and commercial evictions</li>
+            <li>Unlawful detainer suits</li>
+            <li>Tenant abandonment and property recovery</li>
+            <li>Real estate transaction disputes</li>
+            <li>Adjacent property and boundary disputes</li>
+            <li>Title insurance disputes</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="back-row">
+        <a href="#top" class="back-to-top">Back to Top</a>
+        <a href="https://home.readylegal.net#intake" class="btn-primary">Speak With an Attorney &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="https://home.readylegal.net" class="logo">READY LEGAL</a>
+        <p>Prompt, capable, and effective legal representation for Orlando's small business community. Construction law, business law, and litigation throughout Florida.</p>
+        <br>
+        <p style="font-size:11px; color:rgba(255,255,255,0.22);">Ready Legal is the operating name of Travis McConnell, PLLC.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="https://counsel.readylegal.net">Counsel</a></li>
+          <li><a href="#">Practice Areas</a></li>
+          <li><a href="https://readylegal.net/pricing/">Pricing</a></li>
+          <li><a href="https://readylegal.net/about/">About</a></li>
+          <li><a href="https://readylegal.net/articles/">Blog</a></li>
+          <li><a href="https://home.readylegal.net#intake">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          924 N. Magnolia Avenue<br>
+          Suite 202, #1178<br>
+          Orlando, FL 32803<br>
+          <span style="font-size:11px; color:rgba(255,255,255,0.25);">*Postbox &mdash; mailing only</span>
+          <br><br>
+          <a href="tel:4072582002">(407) 258-2002</a><br>
+          <a href="mailto:admin@readylegal.net">admin@readylegal.net</a><br>
+          <a href="https://home.readylegal.net">www.readylegal.net</a>
+          <br><br>
+          Veteran Owned &#127482;&#127480;
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">The information on this page is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed until a written engagement agreement has been executed by both parties. Services are limited to matters involving the State of Florida.</p>
+      <p class="footer-copy">&copy; 2025 Ready Legal</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Keep active tab in sync with scroll position
+var sections = ['construction', 'business', 'litigation'];
+var tabs = document.querySelectorAll('.area-tab');
+
+function setActive(clickedTab) {
+  tabs.forEach(function(t) { t.classList.remove('active'); });
+  clickedTab.classList.add('active');
+}
+
+// Update active tab on scroll
+window.addEventListener('scroll', function() {
+  var scrollY = window.scrollY + 180;
+  var current = 'construction';
+
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+      current = id;
+    }
+  });
+
+  tabs.forEach(function(tab) {
+    var href = tab.getAttribute('href');
+    tab.classList.toggle('active', href === '#' + current);
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
