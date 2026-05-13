@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Practice Areas | Ready Legal</title>
 <meta name="description" content="Ready Legal represents Florida contractors, small businesses, and clients in construction law, business law, and litigation throughout Florida.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="Practice%20Areas%20_%20Ready%20Legal_files/css2.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-
 :root {
   --navy: #0b2a4a;
   --navy-mid: #143a63;
@@ -24,10 +20,8 @@
   --text: #1a2332;
   --text-light: #5a6478;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Inter', sans-serif;
   background: var(--white);
@@ -35,7 +29,6 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
 }
-
 /* ── HEADER ──────────────────────────────────────────────────── */
 header {
   background: var(--navy);
@@ -49,16 +42,81 @@ header {
   height: 68px;
   box-shadow: 0 2px 24px rgba(0,0,0,0.25);
 }
-
 .logo { color: white; text-decoration: none; font-weight: 700; font-size: 20px; letter-spacing: 4px; text-transform: uppercase; transition: color 0.3s; }
 .logo:hover { color: var(--orange); }
-
 nav { display: flex; gap: 28px; align-items: center; }
 nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
 nav a:hover { color: white; }
 .nav-cta { background: var(--orange); color: white !important; padding: 9px 20px; border-radius: 3px; font-weight: 600 !important; transition: background 0.3s !important; }
 .nav-cta:hover { background: var(--orange-dark) !important; }
-
+/* ── HAMBURGER ───────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ── MOBILE MENU ─────────────────────────────────────────────── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: var(--navy-mid);
+  z-index: 99;
+  flex-direction: column;
+  padding: 8px 0 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu.open {
+  display: flex;
+  animation: menuSlideDown 0.22s ease forwards;
+}
+@keyframes menuSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mobile-menu a {
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-menu a:last-of-type { border-bottom: none; }
+.mobile-menu a:hover { color: white; background: rgba(255,255,255,0.05); }
+.mobile-menu .mobile-cta {
+  background: var(--orange);
+  color: white !important;
+  margin: 16px 24px 0;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: 700 !important;
+  padding: 14px 28px !important;
+  border-bottom: none !important;
+}
+.mobile-menu .mobile-cta:hover { background: var(--orange-dark) !important; }
 /* ── HERO ─────────────────────────────────────────────────────── */
 .hero {
   position: relative;
@@ -66,7 +124,6 @@ nav a:hover { color: white; }
   background: var(--navy);
   overflow: hidden;
 }
-
 .hero-video {
   position: absolute;
   inset: 0;
@@ -75,19 +132,15 @@ nav a:hover { color: white; }
   object-fit: cover;
   object-position: center;
 }
-
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(100deg, rgba(11,42,74,0.92) 45%, rgba(11,42,74,0.55) 100%);
 }
-
 .hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
-
 .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s; }
 .hero h1 { font-weight: 700; font-size: clamp(32px, 5vw, 58px); color: white; line-height: 1.1; margin-bottom: 16px; max-width: 700px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.25s; }
 .hero-sub { font-size: 16px; color: rgba(255,255,255,0.65); font-weight: 300; max-width: 560px; line-height: 1.8; opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
-
 /* ── AREA SELECTOR ────────────────────────────────────────────── */
 .area-selector {
   background: var(--off-white);
@@ -98,14 +151,12 @@ nav a:hover { color: white; }
   z-index: 90;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
-
 .area-selector-inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   gap: 0;
 }
-
 .area-tab {
   flex: 1;
   display: flex;
@@ -123,12 +174,9 @@ nav a:hover { color: white; }
   border-right: none;
   font-family: 'Inter', sans-serif;
 }
-
 .area-tab:hover { background: white; border-bottom-color: var(--gray); }
 .area-tab.active { border-bottom-color: var(--orange); background: white; }
-
 .area-tab-icon { font-size: 26px; line-height: 1; }
-
 .area-tab-label {
   font-size: 13px;
   font-weight: 700;
@@ -136,7 +184,6 @@ nav a:hover { color: white; }
   color: var(--navy);
   text-transform: uppercase;
 }
-
 .area-tab-sub {
   font-size: 11px;
   color: var(--text-light);
@@ -144,19 +191,15 @@ nav a:hover { color: white; }
   text-align: center;
   line-height: 1.4;
 }
-
 /* ── PRACTICE AREA SECTIONS ──────────────────────────────────── */
 .area-section {
   padding: 0;
   scroll-margin-top: 140px;
 }
-
-/* Area header band */
 .area-band {
   background: var(--navy);
   padding: 56px 48px;
 }
-
 .area-band-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -165,7 +208,6 @@ nav a:hover { color: white; }
   gap: 72px;
   align-items: center;
 }
-
 .area-band-content .area-eyebrow {
   font-size: 11px;
   font-weight: 600;
@@ -174,7 +216,6 @@ nav a:hover { color: white; }
   color: var(--orange);
   margin-bottom: 12px;
 }
-
 .area-band-content h2 {
   font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 700;
@@ -182,7 +223,6 @@ nav a:hover { color: white; }
   line-height: 1.1;
   margin-bottom: 20px;
 }
-
 .area-band-content p {
   font-size: 16px;
   color: rgba(255,255,255,0.68);
@@ -190,9 +230,7 @@ nav a:hover { color: white; }
   line-height: 1.85;
   margin-bottom: 18px;
 }
-
 .area-band-content p:last-of-type { margin-bottom: 28px; }
-
 .btn-primary {
   background: var(--orange);
   color: white;
@@ -205,7 +243,6 @@ nav a:hover { color: white; }
   transition: background 0.3s, transform 0.2s;
 }
 .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
-
 .area-band-image { position: relative; }
 .area-band-image::before {
   content: '';
@@ -216,25 +253,19 @@ nav a:hover { color: white; }
   opacity: 0.4;
 }
 .area-band-image img { width: 100%; display: block; border-radius: 3px; position: relative; z-index: 1; filter: grayscale(20%); }
-
-/* Services sub-sections */
 .area-services {
   background: var(--white);
   padding: 64px 48px;
   border-bottom: 1px solid var(--gray);
 }
-
 .area-services:last-of-type { border-bottom: none; }
-
 .area-services-inner { max-width: 1200px; margin: 0 auto; }
-
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 40px;
 }
-
 .service-card {
   background: var(--off-white);
   border: 1px solid var(--gray);
@@ -243,13 +274,11 @@ nav a:hover { color: white; }
   border-radius: 2px;
   transition: border-top-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-
 .service-card:hover {
   border-top-color: var(--orange);
   box-shadow: 0 6px 24px rgba(0,0,0,0.08);
   transform: translateY(-2px);
 }
-
 .service-card h3 {
   font-size: 15px;
   font-weight: 700;
@@ -258,9 +287,7 @@ nav a:hover { color: white; }
   padding-bottom: 12px;
   border-bottom: 1px solid var(--gray);
 }
-
 .service-card ul { list-style: none; }
-
 .service-card li {
   font-size: 13px;
   color: var(--text-light);
@@ -271,11 +298,8 @@ nav a:hover { color: white; }
   line-height: 1.45;
   font-weight: 300;
 }
-
 .service-card li::before { content: '—'; color: var(--orange); flex-shrink: 0; font-weight: 700; }
 .service-card li:last-child { border-bottom: none; }
-
-/* Back to top row */
 .back-row {
   display: flex;
   align-items: center;
@@ -285,7 +309,6 @@ nav a:hover { color: white; }
   flex-wrap: wrap;
   gap: 16px;
 }
-
 .back-to-top {
   font-size: 12px;
   font-weight: 700;
@@ -300,19 +323,15 @@ nav a:hover { color: white; }
 }
 .back-to-top:hover { color: var(--navy); }
 .back-to-top::before { content: '↑'; font-size: 14px; }
-
-/* Separator between areas */
 .area-divider {
   height: 4px;
   background: linear-gradient(90deg, var(--navy), var(--navy-mid), var(--orange));
 }
-
 /* ── CTA STRIP ────────────────────────────────────────────────── */
 .cta-strip {
   background: var(--orange);
   padding: 48px 48px;
 }
-
 .cta-strip-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -322,10 +341,8 @@ nav a:hover { color: white; }
   gap: 32px;
   flex-wrap: wrap;
 }
-
 .cta-strip h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: white; line-height: 1.2; }
 .cta-strip p { font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 6px; }
-
 .btn-white {
   background: white;
   color: var(--orange);
@@ -339,7 +356,6 @@ nav a:hover { color: white; }
   display: inline-block;
 }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-
 /* ── FOOTER ───────────────────────────────────────────────────── */
 footer { background: #07192c; padding: 56px 48px 28px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
@@ -357,13 +373,12 @@ footer { background: #07192c; padding: 56px 48px 28px; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
 .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.75; max-width: 680px; }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); white-space: nowrap; }
-
 /* ── ANIMATIONS ───────────────────────────────────────────────── */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
 /* ── RESPONSIVE ───────────────────────────────────────────────── */
 @media (max-width: 960px) {
   nav { display: none; }
+  .hamburger { display: flex; }
   header { padding: 0 24px; }
   .hero { padding: 56px 24px; }
   .area-selector { padding: 0 16px; top: 68px; }
@@ -379,7 +394,6 @@ footer { background: #07192c; padding: 56px 48px 28px; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   footer { padding: 48px 24px 24px; }
 }
-
 </style>
 </head>
 <body>
@@ -395,7 +409,22 @@ footer { background: #07192c; padding: 56px 48px 28px; }
     <a href="https://resources.readylegal.net/">Resources</a>
     <a href="https://home.readylegal.net/#intake" class="nav-cta">Get Help</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="https://counsel.readylegal.net/">Counsel</a>
+  <a href="#" style="color:white;">Practice Areas</a>
+  <a href="https://pricing.readylegal.net/">Pricing</a>
+  <a href="https://about.readylegal.net/">About</a>
+  <a href="https://resources.readylegal.net/">Resources</a>
+  <a href="https://home.readylegal.net/#intake" class="mobile-cta">Get Help</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -433,12 +462,10 @@ and small business owners.</p>
   </div>
 </div>
 
-
 <!-- ═══════════════════════════════════════════════════════════
      CONSTRUCTION LAW
 ══════════════════════════════════════════════════════════════ -->
 <section class="area-section" id="construction">
-
   <div class="area-band">
     <div class="area-band-inner">
       <div class="area-band-content">
@@ -457,11 +484,9 @@ services tailored to the unique demands of the industry.</p>
       </div>
     </div>
   </div>
-
   <div class="area-services">
     <div class="area-services-inner">
       <div class="services-grid">
-
         <div class="service-card">
           <h3>Lien &amp; Bond Claims</h3>
           <ul>
@@ -472,7 +497,6 @@ services tailored to the unique demands of the industry.</p>
             <li>Negotiating settlements between contractors</li>
           </ul>
         </div>
-
         <div class="service-card">
           <h3>Payment &amp; Defect Litigation</h3>
           <ul>
@@ -484,7 +508,6 @@ services tailored to the unique demands of the industry.</p>
             <li>Secondary damages and general liability insurance issues</li>
           </ul>
         </div>
-
         <div class="service-card">
           <h3>Contract &amp; General Support</h3>
           <ul>
@@ -496,16 +519,13 @@ services tailored to the unique demands of the industry.</p>
             <li>Local permitting issues and disputes</li>
           </ul>
         </div>
-
       </div>
-
       <div class="back-row">
         <a href="#top" class="back-to-top">Back to Top</a>
         <a href="https://home.readylegal.net/#intake" class="btn-primary">Speak With an Attorney →</a>
       </div>
     </div>
   </div>
-
 </section>
 
 <div class="area-divider"></div>
@@ -514,7 +534,6 @@ services tailored to the unique demands of the industry.</p>
      BUSINESS LAW
 ══════════════════════════════════════════════════════════════ -->
 <section class="area-section" id="business">
-
   <div class="area-band">
     <div class="area-band-inner">
       <div class="area-band-content">
@@ -534,11 +553,9 @@ business needs to thrive in a competitive environment.</p>
       </div>
     </div>
   </div>
-
   <div class="area-services">
     <div class="area-services-inner">
       <div class="services-grid">
-
         <div class="service-card">
           <h3>Start-Ups &amp; Operations</h3>
           <ul>
@@ -549,7 +566,6 @@ business needs to thrive in a competitive environment.</p>
             <li>Drafting form contracts and terms of service</li>
           </ul>
         </div>
-
         <div class="service-card">
           <h3>Business Litigation</h3>
           <ul>
@@ -561,7 +577,6 @@ business needs to thrive in a competitive environment.</p>
             <li>Business-to-business collections</li>
           </ul>
         </div>
-
         <div class="service-card">
           <h3>Contract Review &amp; Drafting</h3>
           <ul>
@@ -572,16 +587,13 @@ business needs to thrive in a competitive environment.</p>
             <li>Contract negotiation and risk review</li>
           </ul>
         </div>
-
       </div>
-
       <div class="back-row">
         <a href="#top" class="back-to-top">Back to Top</a>
         <a href="https://home.readylegal.net/#intake" class="btn-primary">Speak With an Attorney →</a>
       </div>
     </div>
   </div>
-
 </section>
 
 <div class="area-divider"></div>
@@ -590,7 +602,6 @@ business needs to thrive in a competitive environment.</p>
      LITIGATION
 ══════════════════════════════════════════════════════════════ -->
 <section class="area-section" id="litigation">
-
   <div class="area-band">
     <div class="area-band-inner">
       <div class="area-band-content">
@@ -611,11 +622,9 @@ owners.</p>
       </div>
     </div>
   </div>
-
   <div class="area-services">
     <div class="area-services-inner">
       <div class="services-grid">
-
         <div class="service-card">
           <h3>Commercial Litigation</h3>
           <ul>
@@ -627,7 +636,6 @@ owners.</p>
             <li>Defective service and termination disputes</li>
           </ul>
         </div>
-
         <div class="service-card">
           <h3>Construction Litigation</h3>
           <ul>
@@ -639,7 +647,6 @@ owners.</p>
             <li>Payment bond claims and enforcement</li>
           </ul>
         </div>
-
         <div class="service-card">
           <h3>Evictions &amp; Property Disputes</h3>
           <ul>
@@ -651,19 +658,14 @@ owners.</p>
             <li>Title insurance disputes</li>
           </ul>
         </div>
-
       </div>
-
       <div class="back-row">
         <a href="#top" class="back-to-top">Back to Top</a>
         <a href="https://home.readylegal.net/#intake" class="btn-primary">Speak With an Attorney →</a>
       </div>
     </div>
   </div>
-
 </section>
-
-
 
 <!-- FOOTER -->
 <footer>
@@ -716,6 +718,28 @@ limited to matters involving the State of Florida.</p>
 </footer>
 
 <script>
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+var isOpen = false;
+
+hamburger.addEventListener('click', function() {
+  isOpen = !isOpen;
+  hamburger.classList.toggle('open', isOpen);
+  mobileMenu.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+  mobileMenu.setAttribute('aria-hidden', !isOpen);
+});
+
+mobileMenu.querySelectorAll('a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    isOpen = false;
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  });
+});
+
 // Keep active tab in sync with scroll position
 var sections = ['construction', 'business', 'litigation'];
 var tabs = document.querySelectorAll('.area-tab');
@@ -725,25 +749,20 @@ function setActive(clickedTab) {
   clickedTab.classList.add('active');
 }
 
-// Update active tab on scroll
 window.addEventListener('scroll', function() {
   var scrollY = window.scrollY + 180;
   var current = 'construction';
-
   sections.forEach(function(id) {
     var el = document.getElementById(id);
     if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
       current = id;
     }
   });
-
   tabs.forEach(function(tab) {
     var href = tab.getAttribute('href');
     tab.classList.toggle('active', href === '#' + current);
   });
 }, { passive: true });
 </script>
-
-
 
 </body></html>
