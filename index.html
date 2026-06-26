@@ -405,6 +405,149 @@ footer { background: #07192c; padding: 56px 48px 28px; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
 .footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.75; max-width: 680px; }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); white-space: nowrap; }
+/* ── CTA / INTAKE FORM ───────────────────────────────────────── */
+.cta-section {
+  background: white;
+  border-top: 1px solid var(--gray);
+  padding: 80px 48px;
+}
+.cta-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.cta-left p {
+  font-size: 16px;
+  color: var(--text-light);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.section-title {
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.cta-phone {
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--navy);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+}
+.cta-phone:hover { color: var(--orange); }
+.cta-hours { font-size: 13px; color: var(--text-light); font-weight: 500; }
+.form-box {
+  background: var(--off-white);
+  border: 1px solid var(--gray);
+  border-top: 3px solid var(--orange);
+  padding: 40px 36px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.form-box h3 {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--navy);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+form input, form select, form textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: white;
+  margin-bottom: 18px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+form input:focus, form select:focus, form textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+form textarea { resize: vertical; }
+form button {
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.3s;
+}
+form button:hover { background: var(--orange-dark); }
+/* ── MOBILE FORM PANEL ───────────────────────────────────────── */
+.mobile-form-panel {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: white;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.28);
+  padding: 24px 24px 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
+}
+.mobile-form-panel.open { transform: translateY(0); }
+.mobile-form-panel-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 299;
+}
+.mobile-form-panel-overlay.open { display: block; }
+.mobile-form-panel-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-light);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+}
 /* ── ANIMATIONS ───────────────────────────────────────────────── */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 /* ── RESPONSIVE ───────────────────────────────────────────────── */
@@ -423,6 +566,8 @@ footer { background: #07192c; padding: 56px 48px 28px; }
     margin-right: 16px;
   }
   .mobile-consult-bar { display: flex; }
+  .mobile-form-panel { display: block; }
+  .cta-section { display: none; }
   body { padding-bottom: 64px; }
   .hero { padding: 56px 24px; }
   .area-selector { padding: 0 16px; top: 68px; }
@@ -470,7 +615,7 @@ footer { background: #07192c; padding: 56px 48px 28px; }
 </div>
 <!-- MOBILE CONSULT BAR -->
 <div class="mobile-consult-bar">
-  <a href="https://home.readylegal.net/#intake">Request a Consultation</a>
+  <a href="#" onclick="openMobileForm(); return false;">Request a Consultation</a>
 </div>
 <!-- HERO -->
 <section class="hero" id="top">
@@ -700,16 +845,53 @@ owners.</p>
     </div>
   </div>
 </section>
-<!-- CTA STRIP -->
-<section class="cta-strip">
-  <div class="cta-strip-inner">
-    <div>
-      <h2>Ready to get started?</h2>
-      <p>Schedule a consultation with a Florida attorney today.</p>
+<!-- INTAKE FORM -->
+<section class="cta-section" id="intake">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <p class="section-label">Get Help</p>
+      <h2 class="section-title">Ready to speak with an attorney?</h2>
+      <p>Complete the form and our team will follow up promptly. You can also reach us directly by phone.</p>
+      <a href="tel:4072582002" class="cta-phone">407.258.2002</a>
+      <p class="cta-hours">Monday – Friday &nbsp;|&nbsp; 9:00 AM – 5:00 PM</p>
     </div>
-    <a href="https://home.readylegal.net/#intake" class="btn-white">Request a Consultation →</a>
+    <div class="form-box">
+      <h3>Request a Consultation</h3>
+      <form action="https://formspree.io/f/xgonadnj" method="POST" autocomplete="off" id="desktopForm">
+        <input type="hidden" name="_subject" value="Consultation Request - Ready Legal">
+        <label for="d-name">Name</label>
+        <input type="text" id="d-name" name="name" placeholder="Jane Smith" required autocomplete="new-password">
+        <label for="d-email">Email</label>
+        <input type="email" id="d-email" name="email" placeholder="jane@example.com" required autocomplete="new-password">
+        <label for="d-phone">Phone</label>
+        <input type="tel" id="d-phone" name="phone" placeholder="(407) 555-0000" autocomplete="new-password">
+        <label for="d-message">Briefly Describe Your Legal Matter</label>
+        <textarea id="d-message" name="message" rows="4" placeholder="Tell us about your situation..." required></textarea>
+        <button type="submit">Get Help →</button>
+      </form>
+    </div>
   </div>
 </section>
+<!-- MOBILE FORM PANEL -->
+<div class="mobile-form-panel-overlay" id="mobileFormOverlay" onclick="closeMobileForm()"></div>
+<div class="mobile-form-panel" id="mobileFormPanel">
+  <button class="mobile-form-panel-close" onclick="closeMobileForm()" aria-label="Close">✕</button>
+  <div class="form-box" style="box-shadow:none;border:none;padding:0;">
+    <h3>Request a Consultation</h3>
+    <form action="https://formspree.io/f/xgonadnj" method="POST" autocomplete="off" id="mobileForm">
+      <input type="hidden" name="_subject" value="Consultation Request - Ready Legal">
+      <label for="mob-name">Name</label>
+      <input type="text" id="mob-name" name="name" placeholder="Jane Smith" required autocomplete="new-password">
+      <label for="mob-email">Email</label>
+      <input type="email" id="mob-email" name="email" placeholder="jane@example.com" required autocomplete="new-password">
+      <label for="mob-phone">Phone</label>
+      <input type="tel" id="mob-phone" name="phone" placeholder="(407) 555-0000" autocomplete="new-password">
+      <label for="mob-message">Briefly Describe Your Legal Matter</label>
+      <textarea id="mob-message" name="message" rows="3" placeholder="Tell us about your situation..." required></textarea>
+      <button type="submit">Get Help →</button>
+    </form>
+  </div>
+</div>
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -800,5 +982,49 @@ window.addEventListener('scroll', function() {
     tab.classList.toggle('active', href === '#' + current);
   });
 }, { passive: true });
+</script>
+<script>
+function openMobileForm() {
+  document.getElementById('mobileFormPanel').classList.add('open');
+  document.getElementById('mobileFormOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileForm() {
+  document.getElementById('mobileFormPanel').classList.remove('open');
+  document.getElementById('mobileFormOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+<script>
+document.querySelectorAll('form[action*="formspree"]').forEach(function(form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type="submit"]');
+    var data = {};
+    form.querySelectorAll('input, textarea, select').forEach(function(el) {
+      if (el.name) data[el.name] = el.value;
+    });
+    var required = form.querySelectorAll('[required]');
+    var missing = false;
+    required.forEach(function(el) {
+      if (!el.value.trim()) { missing = true; el.style.borderColor = '#e53e3e'; }
+      else el.style.borderColor = '';
+    });
+    if (missing) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(r) {
+      if (r.ok) { btn.textContent = 'Sent ✓'; form.reset(); }
+      else { btn.disabled = false; btn.textContent = 'Get Help →'; alert('Something went wrong. Please call us at (407) 258-2002.'); }
+    }).catch(function() {
+      btn.disabled = false; btn.textContent = 'Get Help →';
+      alert('Something went wrong. Please call us at (407) 258-2002.');
+    });
+  });
+});
 </script>
 </body></html>
