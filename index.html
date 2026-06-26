@@ -166,6 +166,7 @@ nav a:hover { color: white; }
   padding: 24px 24px 32px;
   max-height: 90vh;
   overflow-y: auto;
+  overflow-x: hidden;
   transform: translateY(100%);
   transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
 }
@@ -928,15 +929,24 @@ window.addEventListener('scroll', function() {
 }, { passive: true });
 </script>
 <script>
+var _scrollY = 0;
 function openMobileForm() {
+  _scrollY = window.scrollY;
   document.getElementById('mobileFormPanel').classList.add('open');
   document.getElementById('mobileFormOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + _scrollY + 'px';
+  document.body.style.width = '100%';
+  document.body.style.overflowX = 'hidden';
 }
 function closeMobileForm() {
   document.getElementById('mobileFormPanel').classList.remove('open');
   document.getElementById('mobileFormOverlay').classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  document.body.style.overflowX = '';
+  window.scrollTo(0, _scrollY);
 }
 </script>
 <script>
