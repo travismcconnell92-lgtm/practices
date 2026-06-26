@@ -28,6 +28,7 @@ body {
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
+  max-width: 100%;
 }
 /* ── HEADER ──────────────────────────────────────────────────── */
 header {
@@ -50,39 +51,6 @@ nav a:hover { color: white; }
 .nav-cta { background: var(--orange); color: white !important; padding: 9px 20px; border-radius: 50px; font-weight: 600 !important; transition: background 0.3s !important; white-space: nowrap; }
 .nav-cta:hover { background: var(--orange-dark) !important; }
 .header-phone-mobile { display: none; }
-/* ── MOBILE CONSULT BAR ──────────────────────────────────────── */
-.mobile-consult-bar {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  background: var(--navy);
-  border-top: 2px solid var(--orange);
-  padding: 12px 20px;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.35);
-}
-.mobile-consult-bar a {
-  display: block;
-  background: var(--orange);
-  color: white;
-  width: 100%;
-  max-width: 400px;
-  padding: 13px 20px;
-  font-size: 13px;
-  font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border-radius: 50px;
-  text-align: center;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-.mobile-consult-bar a:hover { background: var(--orange-dark); }
 /* ── HAMBURGER ───────────────────────────────────────────────── */
 .hamburger {
   display: none;
@@ -151,6 +119,77 @@ nav a:hover { color: white; }
   border-bottom: none !important;
 }
 .mobile-menu .mobile-cta:hover { background: var(--orange-dark) !important; }
+/* ── MOBILE CONSULT BAR ──────────────────────────────────────── */
+.mobile-consult-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--navy);
+  border-top: 2px solid var(--orange);
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.35);
+}
+.mobile-consult-bar a {
+  display: block;
+  background: var(--orange);
+  color: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 13px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.mobile-consult-bar a:hover { background: var(--orange-dark); }
+/* ── MOBILE FORM PANEL ───────────────────────────────────────── */
+.mobile-form-panel {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: white;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.28);
+  padding: 24px 24px 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
+}
+.mobile-form-panel.open { transform: translateY(0); }
+.mobile-form-panel-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 299;
+}
+.mobile-form-panel-overlay.open { display: block; }
+.mobile-form-panel-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--text-light);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+}
 /* ── HERO ─────────────────────────────────────────────────────── */
 .hero {
   position: relative;
@@ -184,6 +223,7 @@ nav a:hover { color: white; }
   top: 68px;
   z-index: 90;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
 }
 .area-selector-inner {
   max-width: 1200px;
@@ -193,6 +233,7 @@ nav a:hover { color: white; }
 }
 .area-tab {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -207,16 +248,21 @@ nav a:hover { color: white; }
   border-left: none;
   border-right: none;
   font-family: 'Inter', sans-serif;
+  overflow: hidden;
 }
 .area-tab:hover { background: white; border-bottom-color: var(--gray); }
 .area-tab.active { border-bottom-color: var(--orange); background: white; }
-.area-tab-icon { font-size: 26px; line-height: 1; }
+.area-tab-icon { font-size: 26px; line-height: 1; flex-shrink: 0; }
 .area-tab-label {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--navy);
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 .area-tab-sub {
   font-size: 11px;
@@ -233,6 +279,7 @@ nav a:hover { color: white; }
 .area-band {
   background: var(--navy);
   padding: 56px 48px;
+  overflow: hidden;
 }
 .area-band-inner {
   max-width: 1200px;
@@ -264,19 +311,7 @@ nav a:hover { color: white; }
   line-height: 1.85;
   margin-bottom: 18px;
 }
-.area-band-content p:last-of-type { margin-bottom: 28px; }
-.btn-primary {
-  background: var(--orange);
-  color: white;
-  padding: 13px 28px;
-  border-radius: 3px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  display: inline-block;
-  transition: background 0.3s, transform 0.2s;
-}
-.btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+.area-band-content p:last-of-type { margin-bottom: 0; }
 .area-band-image { position: relative; }
 .area-band-image::before {
   content: '';
@@ -359,52 +394,6 @@ nav a:hover { color: white; }
   height: 4px;
   background: linear-gradient(90deg, var(--navy), var(--navy-mid), var(--orange));
 }
-/* ── CTA STRIP ────────────────────────────────────────────────── */
-.cta-strip {
-  background: var(--orange);
-  padding: 48px 48px;
-}
-.cta-strip-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.cta-strip h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: white; line-height: 1.2; }
-.cta-strip p { font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 300; margin-top: 6px; }
-.btn-white {
-  background: white;
-  color: var(--orange);
-  padding: 14px 32px;
-  border-radius: 3px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  white-space: nowrap;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-block;
-}
-.btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-/* ── FOOTER ───────────────────────────────────────────────────── */
-footer { background: #07192c; padding: 56px 48px 28px; }
-.footer-inner { max-width: 1200px; margin: 0 auto; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
-.footer-brand .logo { display: block; margin-bottom: 14px; }
-.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
-.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 9px; }
-.footer-col a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; }
-.footer-col a:hover { color: var(--orange); }
-.footer-contact { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
-.footer-contact a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
-.footer-contact a:hover { color: var(--orange); }
-.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
-.footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.75; max-width: 680px; }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); white-space: nowrap; }
 /* ── CTA / INTAKE FORM ───────────────────────────────────────── */
 .cta-section {
   background: white;
@@ -510,44 +499,23 @@ form button {
   transition: background 0.3s;
 }
 form button:hover { background: var(--orange-dark); }
-/* ── MOBILE FORM PANEL ───────────────────────────────────────── */
-.mobile-form-panel {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 300;
-  background: white;
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -8px 40px rgba(0,0,0,0.28);
-  padding: 24px 24px 32px;
-  max-height: 90vh;
-  overflow-y: auto;
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.32,0.72,0,1);
-}
-.mobile-form-panel.open { transform: translateY(0); }
-.mobile-form-panel-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 299;
-}
-.mobile-form-panel-overlay.open { display: block; }
-.mobile-form-panel-close {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  color: var(--text-light);
-  cursor: pointer;
-  line-height: 1;
-  padding: 4px 8px;
-}
+/* ── FOOTER ───────────────────────────────────────────────────── */
+footer { background: #07192c; padding: 56px 48px 28px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+.footer-brand .logo { display: block; margin-bottom: 14px; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 9px; }
+.footer-col a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; }
+.footer-col a:hover { color: var(--orange); }
+.footer-contact { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
+.footer-contact a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+.footer-contact a:hover { color: var(--orange); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+.footer-disclaimer { font-size: 11px; color: rgba(255,255,255,0.2); line-height: 1.75; max-width: 680px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); white-space: nowrap; }
 /* ── ANIMATIONS ───────────────────────────────────────────────── */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 /* ── RESPONSIVE ───────────────────────────────────────────────── */
@@ -570,18 +538,18 @@ form button:hover { background: var(--orange-dark); }
   .cta-section { display: none; }
   body { padding-bottom: 64px; }
   .hero { padding: 56px 24px; }
-  .area-selector { padding: 0 16px; top: 68px; }
-  .area-tab { padding: 16px 8px; }
+  .area-selector { padding: 0 8px; top: 68px; }
+  .area-tab { padding: 14px 6px; }
+  .area-tab-label { font-size: 11px; letter-spacing: 0; }
   .area-tab-sub { display: none; }
   .area-band { padding: 48px 24px; }
   .area-band-inner { grid-template-columns: 1fr; gap: 40px; }
   .area-band-image { display: none; }
   .area-services { padding: 48px 24px; }
   .services-grid { grid-template-columns: 1fr; gap: 16px; }
-  .cta-strip { padding: 40px 24px; }
-  .cta-strip-inner { flex-direction: column; align-items: flex-start; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
   footer { padding: 48px 24px 24px; }
+  form input, form select, form textarea { font-size: 16px; }
 }
 </style>
 </head>
@@ -595,7 +563,7 @@ form button:hover { background: var(--orange-dark); }
     <a href="https://pricing.readylegal.net/">Pricing</a>
     <a href="https://about.readylegal.net/">About</a>
     <a href="https://resources.readylegal.net/">Resources</a>
-    <a href="https://home.readylegal.net/#intake" class="nav-cta">Get Help</a>
+    <a href="#intake" class="nav-cta">Get Help</a>
   </nav>
   <a href="tel:4072582002" class="header-phone-mobile">(407) 258-2002</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -611,11 +579,31 @@ form button:hover { background: var(--orange-dark); }
   <a href="https://pricing.readylegal.net/">Pricing</a>
   <a href="https://about.readylegal.net/">About</a>
   <a href="https://resources.readylegal.net/">Resources</a>
-  <a href="https://home.readylegal.net/#intake" class="mobile-cta">Get Help</a>
+  <a href="#" onclick="openMobileForm(); return false;" class="mobile-cta">Get Help</a>
 </div>
 <!-- MOBILE CONSULT BAR -->
 <div class="mobile-consult-bar">
   <a href="#" onclick="openMobileForm(); return false;">Request a Consultation</a>
+</div>
+<!-- MOBILE FORM PANEL -->
+<div class="mobile-form-panel-overlay" id="mobileFormOverlay" onclick="closeMobileForm()"></div>
+<div class="mobile-form-panel" id="mobileFormPanel">
+  <button class="mobile-form-panel-close" onclick="closeMobileForm()" aria-label="Close">✕</button>
+  <div class="form-box" style="box-shadow:none;border:none;padding:0;">
+    <h3>Request a Consultation</h3>
+    <form action="https://formspree.io/f/xgonadnj" method="POST" autocomplete="off" id="mobileForm">
+      <input type="hidden" name="_subject" value="Consultation Request - Ready Legal">
+      <label for="mob-name">Name</label>
+      <input type="text" id="mob-name" name="name" placeholder="Jane Smith" required autocomplete="new-password">
+      <label for="mob-email">Email</label>
+      <input type="email" id="mob-email" name="email" placeholder="jane@example.com" required autocomplete="new-password">
+      <label for="mob-phone">Phone</label>
+      <input type="tel" id="mob-phone" name="phone" placeholder="(407) 555-0000" autocomplete="new-password">
+      <label for="mob-message">Briefly Describe Your Legal Matter</label>
+      <textarea id="mob-message" name="message" rows="3" placeholder="Tell us about your situation..." required></textarea>
+      <button type="submit">Get Help →</button>
+    </form>
+  </div>
 </div>
 <!-- HERO -->
 <section class="hero" id="top">
@@ -626,9 +614,7 @@ form button:hover { background: var(--orange-dark); }
   <div class="hero-inner">
     <p class="hero-eyebrow">Orlando, Florida — Statewide Representation</p>
     <h1>Practice Areas</h1>
-    <p class="hero-sub">Ready Legal provides focused representation in
-construction law, business law, and litigation for Florida contractors
-and small business owners.</p>
+    <p class="hero-sub">Ready Legal provides focused representation in construction law, business law, and litigation for Florida contractors and small business owners.</p>
   </div>
 </section>
 <!-- AREA SELECTOR (sticky nav tabs) -->
@@ -660,12 +646,8 @@ and small business owners.</p>
       <div class="area-band-content">
         <p class="area-eyebrow">Practice Area</p>
         <h2>Construction Law</h2>
-        <p>Ready Legal's counsel represents a wide array of clients in
-Florida's construction industry, including material suppliers, general
-contractors, developers, roofers, and smaller sub-trades.</p>
-        <p>From lien rights and payment disputes to licensing matters
-and OSHA defense, Ready Legal provides a full scope of construction law
-services tailored to the unique demands of the industry.</p>
+        <p>Ready Legal's counsel represents a wide array of clients in Florida's construction industry, including material suppliers, general contractors, developers, roofers, and smaller sub-trades.</p>
+        <p>From lien rights and payment disputes to licensing matters and OSHA defense, Ready Legal provides a full scope of construction law services tailored to the unique demands of the industry.</p>
       </div>
       <div class="area-band-image">
         <img src="https://readylegal.net/wp-content/uploads/2024/08/an-image-of-a-lawyer-and-a-construction-worker-standing-3-1.png" alt="Construction law attorney with contractor" loading="lazy">
@@ -724,13 +706,8 @@ services tailored to the unique demands of the industry.</p>
       <div class="area-band-content">
         <p class="area-eyebrow">Practice Area</p>
         <h2>Business Law</h2>
-        <p>Starting and growing a small business demands legal guidance
-that is reliable and tailored to your journey. Ready Legal is available
-to assist contractors, service providers, manufacturers, landlords, and
-property managers.</p>
-        <p>Whether your business is just starting out or looking to
-strengthen its legal foundation, Ready Legal provides the counsel your
-business needs to thrive in a competitive environment.</p>
+        <p>Starting and growing a small business demands legal guidance that is reliable and tailored to your journey. Ready Legal is available to assist contractors, service providers, manufacturers, landlords, and property managers.</p>
+        <p>Whether your business is just starting out or looking to strengthen its legal foundation, Ready Legal provides the counsel your business needs to thrive in a competitive environment.</p>
       </div>
       <div class="area-band-image">
         <img src="https://readylegal.net/wp-content/uploads/2023/12/img_0368-1.jpg" alt="Business law" loading="lazy">
@@ -788,14 +765,8 @@ business needs to thrive in a competitive environment.</p>
       <div class="area-band-content">
         <p class="area-eyebrow">Practice Area</p>
         <h2>Litigation</h2>
-        <p>No matter what type of business you are in, disputes are
-inevitable. Ready Legal's counsel recognizes the financial challenges
-small businesses face and appreciates the need to negotiate before
-resorting to litigation.</p>
-        <p>When negotiation breaks down, Ready Legal is prepared to
-pursue your case in court. The firm handles both straightforward and
-complex litigation matters for Florida contractors and small business
-owners.</p>
+        <p>No matter what type of business you are in, disputes are inevitable. Ready Legal's counsel recognizes the financial challenges small businesses face and appreciates the need to negotiate before resorting to litigation.</p>
+        <p>When negotiation breaks down, Ready Legal is prepared to pursue your case in court. The firm handles both straightforward and complex litigation matters for Florida contractors and small business owners.</p>
       </div>
       <div class="area-band-image">
         <img src="https://readylegal.net/wp-content/uploads/2026/06/court.jpg" alt="Litigation" loading="lazy">
@@ -872,35 +843,13 @@ owners.</p>
     </div>
   </div>
 </section>
-<!-- MOBILE FORM PANEL -->
-<div class="mobile-form-panel-overlay" id="mobileFormOverlay" onclick="closeMobileForm()"></div>
-<div class="mobile-form-panel" id="mobileFormPanel">
-  <button class="mobile-form-panel-close" onclick="closeMobileForm()" aria-label="Close">✕</button>
-  <div class="form-box" style="box-shadow:none;border:none;padding:0;">
-    <h3>Request a Consultation</h3>
-    <form action="https://formspree.io/f/xgonadnj" method="POST" autocomplete="off" id="mobileForm">
-      <input type="hidden" name="_subject" value="Consultation Request - Ready Legal">
-      <label for="mob-name">Name</label>
-      <input type="text" id="mob-name" name="name" placeholder="Jane Smith" required autocomplete="new-password">
-      <label for="mob-email">Email</label>
-      <input type="email" id="mob-email" name="email" placeholder="jane@example.com" required autocomplete="new-password">
-      <label for="mob-phone">Phone</label>
-      <input type="tel" id="mob-phone" name="phone" placeholder="(407) 555-0000" autocomplete="new-password">
-      <label for="mob-message">Briefly Describe Your Legal Matter</label>
-      <textarea id="mob-message" name="message" rows="3" placeholder="Tell us about your situation..." required></textarea>
-      <button type="submit">Get Help →</button>
-    </form>
-  </div>
-</div>
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
         <a href="https://home.readylegal.net/" class="logo">READY LEGAL</a>
-        <p>Prompt, capable, and effective legal representation for
-Orlando's small business community. Construction law, business law, and
-litigation throughout Florida.</p>
+        <p>Prompt, capable, and effective legal representation for Orlando's small business community. Construction law, business law, and litigation throughout Florida.</p>
         <br>
         <p style="font-size:11px; color:rgba(255,255,255,0.22);">Ready Legal is the operating name of Travis McConnell, PLLC.</p>
       </div>
@@ -912,7 +861,7 @@ litigation throughout Florida.</p>
           <li><a href="https://pricing.readylegal.net/">Pricing</a></li>
           <li><a href="https://about.readylegal.net/">About</a></li>
           <li><a href="https://resources.readylegal.net/">Resources</a></li>
-          <li><a href="https://home.readylegal.net/#intake">Contact</a></li>
+          <li><a href="#intake">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -932,11 +881,7 @@ litigation throughout Florida.</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-disclaimer">The information on this page is for
-general informational purposes only and does not constitute legal
-advice. No attorney-client relationship is formed until a written
-engagement agreement has been executed by both parties. Services are
-limited to matters involving the State of Florida.</p>
+      <p class="footer-disclaimer">The information on this page is for general informational purposes only and does not constitute legal advice. No attorney-client relationship is formed until a written engagement agreement has been executed by both parties. Services are limited to matters involving the State of Florida.</p>
       <p class="footer-copy">© 2025 Ready Legal</p>
     </div>
   </div>
@@ -961,7 +906,6 @@ mobileMenu.querySelectorAll('a').forEach(function(link) {
     mobileMenu.setAttribute('aria-hidden', 'true');
   });
 });
-// Keep active tab in sync with scroll position
 var sections = ['construction', 'business', 'litigation'];
 var tabs = document.querySelectorAll('.area-tab');
 function setActive(clickedTab) {
