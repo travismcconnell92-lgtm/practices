@@ -21,7 +21,7 @@
   --text-light: #5a6478;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: 'Inter', sans-serif;
   background: var(--white);
@@ -47,8 +47,42 @@ header {
 nav { display: flex; gap: 28px; align-items: center; }
 nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
 nav a:hover { color: white; }
-.nav-cta { background: var(--orange); color: white !important; padding: 9px 20px; border-radius: 3px; font-weight: 600 !important; transition: background 0.3s !important; }
+.nav-cta { background: var(--orange); color: white !important; padding: 9px 20px; border-radius: 50px; font-weight: 600 !important; transition: background 0.3s !important; white-space: nowrap; }
 .nav-cta:hover { background: var(--orange-dark) !important; }
+.header-phone-mobile { display: none; }
+/* ── MOBILE CONSULT BAR ──────────────────────────────────────── */
+.mobile-consult-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--navy);
+  border-top: 2px solid var(--orange);
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.35);
+}
+.mobile-consult-bar a {
+  display: block;
+  background: var(--orange);
+  color: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 13px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.mobile-consult-bar a:hover { background: var(--orange-dark); }
 /* ── HAMBURGER ───────────────────────────────────────────────── */
 .hamburger {
   display: none;
@@ -110,7 +144,7 @@ nav a:hover { color: white; }
   background: var(--orange);
   color: white !important;
   margin: 16px 24px 0;
-  border-radius: 3px;
+  border-radius: 50px;
   text-align: center;
   font-weight: 700 !important;
   padding: 14px 28px !important;
@@ -303,11 +337,9 @@ nav a:hover { color: white; }
 .back-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-top: 32px;
   border-top: 1px solid var(--gray);
-  flex-wrap: wrap;
-  gap: 16px;
 }
 .back-to-top {
   font-size: 12px;
@@ -380,6 +412,18 @@ footer { background: #07192c; padding: 56px 48px 28px; }
   nav { display: none; }
   .hamburger { display: flex; }
   header { padding: 0 24px; }
+  .header-phone-mobile {
+    display: block;
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+  .mobile-consult-bar { display: flex; }
+  body { padding-bottom: 64px; }
   .hero { padding: 56px 24px; }
   .area-selector { padding: 0 16px; top: 68px; }
   .area-tab { padding: 16px 8px; }
@@ -397,7 +441,6 @@ footer { background: #07192c; padding: 56px 48px 28px; }
 </style>
 </head>
 <body>
-
 <!-- HEADER -->
 <header>
   <a href="https://home.readylegal.net/" class="logo">READY LEGAL</a>
@@ -409,13 +452,13 @@ footer { background: #07192c; padding: 56px 48px 28px; }
     <a href="https://resources.readylegal.net/">Resources</a>
     <a href="https://home.readylegal.net/#intake" class="nav-cta">Get Help</a>
   </nav>
+  <a href="tel:4072582002" class="header-phone-mobile">(407) 258-2002</a>
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </header>
-
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="https://counsel.readylegal.net/">Counsel</a>
@@ -425,7 +468,10 @@ footer { background: #07192c; padding: 56px 48px 28px; }
   <a href="https://resources.readylegal.net/">Resources</a>
   <a href="https://home.readylegal.net/#intake" class="mobile-cta">Get Help</a>
 </div>
-
+<!-- MOBILE CONSULT BAR -->
+<div class="mobile-consult-bar">
+  <a href="https://home.readylegal.net/#intake">Request a Consultation</a>
+</div>
 <!-- HERO -->
 <section class="hero" id="top">
   <video class="hero-video" autoplay muted loop playsinline>
@@ -440,7 +486,6 @@ construction law, business law, and litigation for Florida contractors
 and small business owners.</p>
   </div>
 </section>
-
 <!-- AREA SELECTOR (sticky nav tabs) -->
 <div class="area-selector">
   <div class="area-selector-inner">
@@ -461,7 +506,6 @@ and small business owners.</p>
     </a>
   </div>
 </div>
-
 <!-- ═══════════════════════════════════════════════════════════
      CONSTRUCTION LAW
 ══════════════════════════════════════════════════════════════ -->
@@ -477,7 +521,6 @@ contractors, developers, roofers, and smaller sub-trades.</p>
         <p>From lien rights and payment disputes to licensing matters
 and OSHA defense, Ready Legal provides a full scope of construction law
 services tailored to the unique demands of the industry.</p>
-        <a href="https://home.readylegal.net/#intake" class="btn-primary">Request a Consultation →</a>
       </div>
       <div class="area-band-image">
         <img src="https://readylegal.net/wp-content/uploads/2024/08/an-image-of-a-lawyer-and-a-construction-worker-standing-3-1.png" alt="Construction law attorney with contractor" loading="lazy">
@@ -522,14 +565,11 @@ services tailored to the unique demands of the industry.</p>
       </div>
       <div class="back-row">
         <a href="#top" class="back-to-top">Back to Top</a>
-        <a href="https://home.readylegal.net/#intake" class="btn-primary">Speak With an Attorney →</a>
       </div>
     </div>
   </div>
 </section>
-
 <div class="area-divider"></div>
-
 <!-- ═══════════════════════════════════════════════════════════
      BUSINESS LAW
 ══════════════════════════════════════════════════════════════ -->
@@ -546,7 +586,6 @@ property managers.</p>
         <p>Whether your business is just starting out or looking to
 strengthen its legal foundation, Ready Legal provides the counsel your
 business needs to thrive in a competitive environment.</p>
-        <a href="https://home.readylegal.net/#intake" class="btn-primary">Request a Consultation →</a>
       </div>
       <div class="area-band-image">
         <img src="https://readylegal.net/wp-content/uploads/2023/12/img_0368-1.jpg" alt="Business law" loading="lazy">
@@ -590,14 +629,11 @@ business needs to thrive in a competitive environment.</p>
       </div>
       <div class="back-row">
         <a href="#top" class="back-to-top">Back to Top</a>
-        <a href="https://home.readylegal.net/#intake" class="btn-primary">Speak With an Attorney →</a>
       </div>
     </div>
   </div>
 </section>
-
 <div class="area-divider"></div>
-
 <!-- ═══════════════════════════════════════════════════════════
      LITIGATION
 ══════════════════════════════════════════════════════════════ -->
@@ -615,10 +651,9 @@ resorting to litigation.</p>
 pursue your case in court. The firm handles both straightforward and
 complex litigation matters for Florida contractors and small business
 owners.</p>
-        <a href="https://home.readylegal.net/#intake" class="btn-primary">Request a Consultation →</a>
       </div>
       <div class="area-band-image">
-        <img src="https://readylegal.net/wp-content/uploads/2023/08/court.jpg" alt="Litigation" loading="lazy">
+        <img src="https://readylegal.net/wp-content/uploads/2026/06/court.jpg" alt="Litigation" loading="lazy">
       </div>
     </div>
   </div>
@@ -661,12 +696,20 @@ owners.</p>
       </div>
       <div class="back-row">
         <a href="#top" class="back-to-top">Back to Top</a>
-        <a href="https://home.readylegal.net/#intake" class="btn-primary">Speak With an Attorney →</a>
       </div>
     </div>
   </div>
 </section>
-
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="cta-strip-inner">
+    <div>
+      <h2>Ready to get started?</h2>
+      <p>Schedule a consultation with a Florida attorney today.</p>
+    </div>
+    <a href="https://home.readylegal.net/#intake" class="btn-white">Request a Consultation →</a>
+  </div>
+</section>
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -716,12 +759,10 @@ limited to matters involving the State of Florida.</p>
     </div>
   </div>
 </footer>
-
 <script>
 var hamburger = document.getElementById('hamburger');
 var mobileMenu = document.getElementById('mobileMenu');
 var isOpen = false;
-
 hamburger.addEventListener('click', function() {
   isOpen = !isOpen;
   hamburger.classList.toggle('open', isOpen);
@@ -729,7 +770,6 @@ hamburger.addEventListener('click', function() {
   hamburger.setAttribute('aria-expanded', isOpen);
   mobileMenu.setAttribute('aria-hidden', !isOpen);
 });
-
 mobileMenu.querySelectorAll('a').forEach(function(link) {
   link.addEventListener('click', function() {
     isOpen = false;
@@ -739,16 +779,13 @@ mobileMenu.querySelectorAll('a').forEach(function(link) {
     mobileMenu.setAttribute('aria-hidden', 'true');
   });
 });
-
 // Keep active tab in sync with scroll position
 var sections = ['construction', 'business', 'litigation'];
 var tabs = document.querySelectorAll('.area-tab');
-
 function setActive(clickedTab) {
   tabs.forEach(function(t) { t.classList.remove('active'); });
   clickedTab.classList.add('active');
 }
-
 window.addEventListener('scroll', function() {
   var scrollY = window.scrollY + 180;
   var current = 'construction';
@@ -764,5 +801,4 @@ window.addEventListener('scroll', function() {
   });
 }, { passive: true });
 </script>
-
 </body></html>
